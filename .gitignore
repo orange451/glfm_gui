@@ -9,5 +9,6 @@ target
 .externalToolBuilders/
 .loadpath
 bin/
+GenJniCode/
 tmp/
 Thumbs.db
