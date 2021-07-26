@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -282,7 +283,10 @@ public class AppLoader {
             Class<?> c = getApplicationClass(jarName);
             if (c != null) {
             	System.out.println("Attempting to boot " + c);
-                app = c.newInstance();
+            	Method main = c.getMethod("main", String[].class);
+            	String[] param = new String[0];
+            	main.invoke(null, (Object)param);
+                //app = c.newInstance();
                 //app.setSaveRoot(getAppDataPath(jarName));
                 //GCallBack.getInstance().setApplication(app);
             }
