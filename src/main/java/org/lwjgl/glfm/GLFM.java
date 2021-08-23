@@ -56,6 +56,9 @@ public class GLFM extends Glfm {
 
 			@Override
 			public boolean onTouch(long display, int touch, int phase, double x, double y) {
+				x /= GLFM.glfmGetDisplayScale(display);
+				y /= GLFM.glfmGetDisplayScale(display);
+				
 				if ( GLCallbacks.cursorPosCallbacks.containsKey(display) )
 					GLCallbacks.cursorPosCallbacks.get(display).invoke(display, x, y);
 				
