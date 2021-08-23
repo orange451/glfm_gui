@@ -59,8 +59,13 @@ public class GLFM extends Glfm {
 				x /= GLFM.glfmGetDisplayScale(display);
 				y /= GLFM.glfmGetDisplayScale(display);
 				
-				if ( GLCallbacks.cursorPosCallbacks.containsKey(display) )
-					GLCallbacks.cursorPosCallbacks.get(display).invoke(display, x, y);
+				if ( phase == GLFM.GLFMTouchPhaseEnded ) {
+					if ( GLCallbacks.cursorPosCallbacks.containsKey(display) )
+						GLCallbacks.cursorPosCallbacks.get(display).invoke(display, Double.MIN_VALUE, Double.MIN_VALUE);
+				} else {
+					if ( GLCallbacks.cursorPosCallbacks.containsKey(display) )
+						GLCallbacks.cursorPosCallbacks.get(display).invoke(display, x, y);
+				}
 				
 				if ( GLCallbacks.mouseButtonCallbacks.containsKey(display) )
 					GLCallbacks.mouseButtonCallbacks.get(display).invoke(display, GLFW.GLFW_MOUSE_BUTTON_LEFT, touch, phase);
