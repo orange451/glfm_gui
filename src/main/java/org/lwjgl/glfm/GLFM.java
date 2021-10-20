@@ -63,19 +63,23 @@ public class GLFM extends Glfm {
 				x /= GLFM.glfmGetDisplayScale(display);
 				y /= GLFM.glfmGetDisplayScale(display);
 				
-				if ( phase == GLFM.GLFMTouchPhaseEnded ) {
-					if ( GLCallbacks.cursorPosCallbacks.containsKey(display) )
-						GLCallbacks.cursorPosCallbacks.get(display).invoke(display, Double.MIN_VALUE, Double.MIN_VALUE);
-				} else {
+				// Update mouse position
+				if ( phase != GLFM.GLFMTouchPhaseEnded )
 					if ( GLCallbacks.cursorPosCallbacks.containsKey(display) )
 						GLCallbacks.cursorPosCallbacks.get(display).invoke(display, x, y);
-				}
 				
-				if ( GLCallbacks.mouseButtonCallbacks.containsKey(display) )
-					GLCallbacks.mouseButtonCallbacks.get(display).invoke(display, GLFW.GLFW_MOUSE_BUTTON_LEFT, touch, phase);
+				// Port clicking
+				if ( GLCallbacks.mouseButtonCallbacks.containsKey(display) && (phase == GLFM.GLFMTouchPhaseBegan || phase == GLFM.GLFMTouchPhaseEnded) )
+					GLCallbacks.mouseButtonCallbacks.get(display).invoke(display, GLFW.GLFW_MOUSE_BUTTON_LEFT, phase == GLFM.GLFMTouchPhaseBegan ? GLFW.GLFW_PRESS : GLFW.GLFW_RELEASE, phase);
 				
+				// Touch event
 				if ( GLCallbacks.touchCallbacks.containsKey(display) )
 					GLCallbacks.touchCallbacks.get(display).invoke(display, touch, phase, x, y);
+				
+				// Unset mouse position
+				if ( phase == GLFM.GLFMTouchPhaseEnded )
+					if ( GLCallbacks.cursorPosCallbacks.containsKey(display) )
+						GLCallbacks.cursorPosCallbacks.get(display).invoke(display, Double.MIN_VALUE, Double.MIN_VALUE);
 				
 				return false;
 			}
