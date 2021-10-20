@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.lwjgl.glfm.GLFMRenderFuncCallbackI;
+import org.lwjgl.glfm.GLFMTouchCallbackI;
 import org.lwjgl.glfw.GLFWCharCallbackI;
 import org.lwjgl.glfw.GLFWCharModsCallbackI;
 import org.lwjgl.glfw.GLFWCursorEnterCallbackI;
@@ -38,4 +39,5 @@ public class GLCallbacks {
 	public static Map<Long, GLFWWindowMaximizeCallbackI> windowMaximizeCallbacks = new HashMap<>();
 	public static Map<Long, GLFWWindowRefreshCallbackI> windowRefreshCallbacks = new HashMap<>();
 	public static Map<Long, GLFMRenderFuncCallbackI> renderFuncCallbacks = new HashMap<>();
+	public static Map<Long, GLFMTouchCallbackI> touchCallbacks = new HashMap<>();
 }

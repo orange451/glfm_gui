@@ -34,6 +34,10 @@ public class GLFM extends Glfm {
 		return GLCallbacks.renderFuncCallbacks.put(window, callback);
 	}
 	
+	public static GLFMTouchCallbackI glfmSetTouchCallback(long window, GLFMTouchCallbackI callback) {
+		return GLCallbacks.touchCallbacks.put(window, callback);
+	}
+	
 	private static Map<Long, GlfmCallBack> callbacks = new HashMap<>();
 	private static void setupCallbacks(long window) {
 		if ( callbacks.containsKey(window) ) 
@@ -69,6 +73,9 @@ public class GLFM extends Glfm {
 				
 				if ( GLCallbacks.mouseButtonCallbacks.containsKey(display) )
 					GLCallbacks.mouseButtonCallbacks.get(display).invoke(display, GLFW.GLFW_MOUSE_BUTTON_LEFT, touch, phase);
+				
+				if ( GLCallbacks.touchCallbacks.containsKey(display) )
+					GLCallbacks.touchCallbacks.get(display).invoke(display, touch, phase, x, y);
 				
 				return false;
 			}
