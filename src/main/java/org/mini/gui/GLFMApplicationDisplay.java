@@ -17,4 +17,9 @@ public class GLFMApplicationDisplay implements GApplicationDisplay {
 	public void setUserInterfaceOrientation(long display, int value) {
 		Glfm.glfmSetUserInterfaceOrientation(display, value);
 	}
+
+	@Override
+	public void setMultitouchEnabled(long display, boolean value) {
+		Glfm.glfmSetMultitouchEnabled(display, value);
+	}
 }

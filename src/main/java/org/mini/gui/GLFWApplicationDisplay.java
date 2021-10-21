@@ -17,4 +17,8 @@ public class GLFWApplicationDisplay implements GApplicationDisplay {
 		//
 	}
 
+	@Override
+	public void setMultitouchEnabled(long display, boolean value) {
+		//
+	}
 }

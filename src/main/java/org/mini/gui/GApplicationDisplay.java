@@ -6,4 +6,6 @@ public interface GApplicationDisplay {
     public void setKeyboardVisible(long display, boolean value);
     
     public void setUserInterfaceOrientation(long display, int value);
+    
+    public void setMultitouchEnabled(long display, boolean value);
 }
