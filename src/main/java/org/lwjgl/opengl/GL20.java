@@ -46,8 +46,32 @@ public class GL20 extends GL11 {
         return new String(szLog, 0, return_val[0]);
 	}
 	
+	public static void glUniformMatrix1fv(int location, boolean b, FloatBuffer data) {
+		glUniform1fv(location, b?GL_TRUE:GL_FALSE, data.array(), data.arrayOffset());
+	}
+	
+	public static void glUniformMatrix2fv(int location, boolean b, FloatBuffer data) {
+		glUniform2fv(location, b?GL_TRUE:GL_FALSE, data.array(), data.arrayOffset());
+	}
+	
+	public static void glUniformMatrix3fv(int location, boolean b, FloatBuffer data) {
+		glUniform3fv(location, b?GL_TRUE:GL_FALSE, data.array(), data.arrayOffset());
+	}
+	
 	public static void glUniformMatrix4fv(int location, boolean b, FloatBuffer data) {
 		glUniform4fv(location, b?GL_TRUE:GL_FALSE, data.array(), data.arrayOffset());
+	}
+	
+	public static void glUniform1fv(int location, float[] data) {
+		glUniform1fv(location, data.length, data, 0);
+	}
+	
+	public static void glUniform2fv(int location, float[] data) {
+		glUniform2fv(location, data.length, data, 0);
+	}
+	
+	public static void glUniform3fv(int location, float[] data) {
+		glUniform3fv(location, data.length, data, 0);
 	}
 	
 	public static void glUniform4fv(int location, float[] data) {
