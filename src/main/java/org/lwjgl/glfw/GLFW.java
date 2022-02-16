@@ -7,6 +7,21 @@ import java.util.Map;
 import org.mini.gl.GLCallbacks;
 import org.mini.glfm.Glfm;
 import org.mini.glfm.GlfmCallBack;
+import org.mini.glfw.GLFWCharCallback;
+import org.mini.glfw.GLFWCharModsCallback;
+import org.mini.glfw.GLFWCursorEnterCallback;
+import org.mini.glfw.GLFWCursorPosCallback;
+import org.mini.glfw.GLFWFramebufferSizeCallback;
+import org.mini.glfw.GLFWKeyCallback;
+import org.mini.glfw.GLFWMouseButtonCallback;
+import org.mini.glfw.GLFWScrollCallback;
+import org.mini.glfw.GLFWWindowCloseCallback;
+import org.mini.glfw.GLFWWindowFocusCallback;
+import org.mini.glfw.GLFWWindowIconifyCallback;
+import org.mini.glfw.GLFWWindowMaximizeCallback;
+import org.mini.glfw.GLFWWindowPosCallback;
+import org.mini.glfw.GLFWWindowRefreshCallback;
+import org.mini.glfw.GLFWWindowSizeCallback;
 import org.mini.gui.GCallBack;
 
 public class GLFW {
@@ -1146,64 +1161,64 @@ public class GLFW {
 		setupCallbacks(window);
 	}
 	
-	public static GLFWCursorPosCallbackI glfwSetCursorPosCallback(long window, GLFWCursorPosCallbackI callback) {
-		return GLCallbacks.cursorPosCallbacks.put(window, callback);
+	public static GLFWCursorPosCallback glfwSetCursorPosCallback(long window, GLFWCursorPosCallbackI callback) {
+		return GLCallbacks.cursorPosCallbacks.put(window, GLFWCursorPosCallback.createSafe(callback));
 	}
 	
-	public static GLFWCharCallbackI glfwSetCharCallback(long window, GLFWCharCallbackI callback) {
-		return GLCallbacks.charCallbacks.put(window, callback);
+	public static GLFWCharCallback glfwSetCharCallback(long window, GLFWCharCallbackI callback) {
+		return GLCallbacks.charCallbacks.put(window, GLFWCharCallback.createSafe(callback));
 	}
 	
-	public static GLFWKeyCallbackI glfwSetKeyCallback(long window, GLFWKeyCallbackI callback) {
-		return GLCallbacks.keyCallbacks.put(window, callback);
+	public static GLFWKeyCallback glfwSetKeyCallback(long window, GLFWKeyCallbackI callback) {
+		return GLCallbacks.keyCallbacks.put(window, GLFWKeyCallback.createSafe(callback));
 	}
 	
-	public static GLFWMouseButtonCallbackI glfwSetMouseButtonCallback(long window, GLFWMouseButtonCallbackI callback) {
-		return GLCallbacks.mouseButtonCallbacks.put(window, callback);
+	public static GLFWMouseButtonCallback glfwSetMouseButtonCallback(long window, GLFWMouseButtonCallbackI callback) {
+		return GLCallbacks.mouseButtonCallbacks.put(window, GLFWMouseButtonCallback.createSafe(callback));
 	}
 	
-	public static GLFWWindowFocusCallbackI glfwSetWindowFocusCallback(long window, GLFWWindowFocusCallbackI callback) {
-		return GLCallbacks.windowFocusCallbacks.put(window, callback);
+	public static GLFWWindowFocusCallback glfwSetWindowFocusCallback(long window, GLFWWindowFocusCallbackI callback) {
+		return GLCallbacks.windowFocusCallbacks.put(window, GLFWWindowFocusCallback.createSafe(callback));
 	}
 	
-	public static GLFWWindowCloseCallbackI glfwSetWindowCloseCallback(long window, GLFWWindowCloseCallbackI callback) {
-		return GLCallbacks.windowCloseCallbacks.put(window, callback);
+	public static GLFWWindowCloseCallback glfwSetWindowCloseCallback(long window, GLFWWindowCloseCallbackI callback) {
+		return GLCallbacks.windowCloseCallbacks.put(window, GLFWWindowCloseCallback.createSafe(callback));
 	}
 	
-	public static GLFWWindowSizeCallbackI glfwSetWindowSizeCallback(long window, GLFWWindowSizeCallbackI callback) {
-		return GLCallbacks.windowSizeCallbacks.put(window, callback);
+	public static GLFWWindowSizeCallback glfwSetWindowSizeCallback(long window, GLFWWindowSizeCallbackI callback) {
+		return GLCallbacks.windowSizeCallbacks.put(window, GLFWWindowSizeCallback.createSafe(callback));
 	}
 	
-	public static GLFWScrollCallbackI glfwSetScrollCallback(long window, GLFWScrollCallbackI callback) {
-		return GLCallbacks.scrollCallbacks.put(window, callback);
+	public static GLFWScrollCallback glfwSetScrollCallback(long window, GLFWScrollCallbackI callback) {
+		return GLCallbacks.scrollCallbacks.put(window, GLFWScrollCallback.createSafe(callback));
 	}
 	
-	public static GLFWWindowIconifyCallbackI glfwSetWindowIconifyCallback(long window, GLFWWindowIconifyCallbackI callback) {
-		return GLCallbacks.windowIconifyCallbacks.put(window, callback);
+	public static GLFWWindowIconifyCallback glfwSetWindowIconifyCallback(long window, GLFWWindowIconifyCallbackI callback) {
+		return GLCallbacks.windowIconifyCallbacks.put(window, GLFWWindowIconifyCallback.createSafe(callback));
 	}
 	
-	public static GLFWFramebufferSizeCallbackI glfwSetFramebufferSizeCallback(long window, GLFWFramebufferSizeCallbackI callback) {
-		return GLCallbacks.framebufferSizeCallbacks.put(window, callback);
+	public static GLFWFramebufferSizeCallback glfwSetFramebufferSizeCallback(long window, GLFWFramebufferSizeCallbackI callback) {
+		return GLCallbacks.framebufferSizeCallbacks.put(window, GLFWFramebufferSizeCallback.createSafe(callback));
 	}
 	
-	public static GLFWCursorEnterCallbackI glfwSetCursorEnterCallback(long window, GLFWCursorEnterCallbackI callback) {
-		return GLCallbacks.cursorEnterCallbacks.put(window, callback);
+	public static GLFWCursorEnterCallback glfwSetCursorEnterCallback(long window, GLFWCursorEnterCallbackI callback) {
+		return GLCallbacks.cursorEnterCallbacks.put(window, GLFWCursorEnterCallback.createSafe(callback));
 	}
 	
-	public static GLFWCharModsCallbackI glfwSetCharModsCallback(long window, GLFWCharModsCallbackI callback) {
-		return GLCallbacks.charModsCallbacks.put(window, callback);
+	public static GLFWCharModsCallback glfwSetCharModsCallback(long window, GLFWCharModsCallbackI callback) {
+		return GLCallbacks.charModsCallbacks.put(window, GLFWCharModsCallback.createSafe(callback));
 	}
 	
-	public static GLFWWindowPosCallbackI glfwSetWindowPosCallback(long window, GLFWWindowPosCallbackI callback) {
-		return GLCallbacks.windowPosCallbacks.put(window, callback);
+	public static GLFWWindowPosCallback glfwSetWindowPosCallback(long window, GLFWWindowPosCallbackI callback) {
+		return GLCallbacks.windowPosCallbacks.put(window, GLFWWindowPosCallback.createSafe(callback));
 	}
 	
-	public static GLFWWindowMaximizeCallbackI glfwSetWindowMaximizeCallback(long window, GLFWWindowMaximizeCallbackI callback) {
-		return GLCallbacks.windowMaximizeCallbacks.put(window, callback);
+	public static GLFWWindowMaximizeCallback glfwSetWindowMaximizeCallback(long window, GLFWWindowMaximizeCallbackI callback) {
+		return GLCallbacks.windowMaximizeCallbacks.put(window, GLFWWindowMaximizeCallback.createSafe(callback));
 	}
 	
-	public static GLFWWindowRefreshCallbackI glfwSetWindowRefreshCallback(long window, GLFWWindowRefreshCallbackI callback) {
-		return GLCallbacks.windowRefreshCallbacks.put(window, callback);
+	public static GLFWWindowRefreshCallback glfwSetWindowRefreshCallback(long window, GLFWWindowRefreshCallbackI callback) {
+		return GLCallbacks.windowRefreshCallbacks.put(window, GLFWWindowRefreshCallback.createSafe(callback));
 	}
 	
 	private static Map<Long, GlfmCallBack> callbacks = new HashMap<>();

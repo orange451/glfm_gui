@@ -7,8 +7,12 @@ import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWCharCallbackI;
 import org.lwjgl.glfw.GLFWKeyCallbackI;
 import org.mini.gl.GLCallbacks;
+import org.mini.glfm.GLFMRenderFuncCallback;
+import org.mini.glfm.GLFMTouchCallback;
 import org.mini.glfm.Glfm;
 import org.mini.glfm.GlfmCallBack;
+import org.mini.glfw.GLFWCharCallback;
+import org.mini.glfw.GLFWKeyCallback;
 
 public class GLFM extends Glfm {
 
@@ -22,20 +26,20 @@ public class GLFM extends Glfm {
 		setupCallbacks(display);
 	}
     
-	public static GLFWCharCallbackI glfmSetCharCallback(long window, GLFWCharCallbackI callback) {
-		return GLCallbacks.charCallbacks.put(window, callback);
+	public static GLFWCharCallback glfmSetCharCallback(long window, GLFWCharCallbackI callback) {
+		return GLCallbacks.charCallbacks.put(window, GLFWCharCallback.createSafe(callback));
 	}
 	
-	public static GLFWKeyCallbackI glfmSetKeyCallback(long window, GLFWKeyCallbackI callback) {
-		return GLCallbacks.keyCallbacks.put(window, callback);
+	public static GLFWKeyCallback glfmSetKeyCallback(long window, GLFWKeyCallbackI callback) {
+		return GLCallbacks.keyCallbacks.put(window, GLFWKeyCallback.createSafe(callback));
 	}
 	
-	public static GLFMRenderFuncCallbackI glfmSetRenderFuncCallback(long window, GLFMRenderFuncCallbackI callback) {
-		return GLCallbacks.renderFuncCallbacks.put(window, callback);
+	public static GLFMRenderFuncCallback glfmSetRenderFuncCallback(long window, GLFMRenderFuncCallbackI callback) {
+		return GLCallbacks.renderFuncCallbacks.put(window, GLFMRenderFuncCallback.createSafe(callback));
 	}
 	
-	public static GLFMTouchCallbackI glfmSetTouchCallback(long window, GLFMTouchCallbackI callback) {
-		return GLCallbacks.touchCallbacks.put(window, callback);
+	public static GLFMTouchCallback glfmSetTouchCallback(long window, GLFMTouchCallbackI callback) {
+		return GLCallbacks.touchCallbacks.put(window, GLFMTouchCallback.createSafe(callback));
 	}
 	
 	private static Map<Long, GlfmCallBack> callbacks = new HashMap<>();
