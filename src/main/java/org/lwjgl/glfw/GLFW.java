@@ -854,10 +854,6 @@ public class GLFW {
     public static void glfwSetGamma(long monitor, float gamma) {
     	//
     }
-    
-    public static long glfwCreateWindow(int width, int height, byte[] title, long monitor, long share) {
-    	return GCallBack.getInstance().getDisplay();
-    }
 
     public static void glfwSetWindowShouldClose(long window, int value) {
     	//
@@ -1040,9 +1036,13 @@ public class GLFW {
 		//
 	}
 	
-	public static long glfwCreateWindow(int width, int height, String title, long unknown, long unknown2) {
-		return 0l;
-	}
+    public static long glfwCreateWindow(int width, int height, CharSequence title, long monitor, long share) {
+        return 0l;
+    }
+
+    public static long glfwCreateWindow(int width, int height, byte[] title, long monitor, long share) {
+    	return 0l;
+    }
 	
 	public static void glfwSetWindowIcon(long windowId, org.lwjgl.glfw.GLFWImage.Buffer buffer) {
 		// TODO implement
