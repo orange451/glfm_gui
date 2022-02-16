@@ -120,7 +120,7 @@ public class NanoVG extends Nanovg {
 		Nanovg.nvgTranslate(vg, x, y);
 	}
 
-	public static void nvgFontSize(long vg, int fontSize) {
+	public static void nvgFontSize(long vg, float fontSize) {
 		Nanovg.nvgFontSize(vg, fontSize);
 	}
 
