@@ -104,8 +104,8 @@ public class NanoVG extends Nanovg {
 		return Nanovg.nvgCreateImageMem(nvg, i, data.array(), data.array().length);
 	}
 
-	public static int nvgCreateFontMem(long nvg, String fontName, ByteBuffer fontData, int i) {
-		return Nanovg.nvgCreateFontMem(nvg, fontName.getBytes(), fontData.array(), i, i);
+	public static int nvgCreateFontMem(long nvg, CharSequence fontName, ByteBuffer fontData, int i) {
+		return Nanovg.nvgCreateFontMem(nvg, fontName.toString().getBytes(), fontData.array(), i, i);
 	}
 
 	public static void nvgScissor(long nvg, float x, float y, float w, float h) {
@@ -124,12 +124,12 @@ public class NanoVG extends Nanovg {
 		Nanovg.nvgFontSize(vg, fontSize);
 	}
 
-	public static void nvgFontFace(long vg, String font) {
-		Nanovg.nvgFontFace(vg, font.getBytes());
+	public static void nvgFontFace(long vg, CharSequence font) {
+		Nanovg.nvgFontFace(vg, font.toString().getBytes());
 	}
 
-	public static void nvgText(long vg, float xx, float yy, String text) {
-		byte[] dat = toUtf8(text);
+	public static void nvgText(long vg, float xx, float yy, CharSequence text) {
+		byte[] dat = toUtf8(text.toString());
 		Nanovg.nvgTextJni(vg, xx, yy, dat, 0, dat.length);
 	}
 
@@ -182,8 +182,8 @@ public class NanoVG extends Nanovg {
 		Nanovg.nvgClosePath(nvg);
 	}
 
-	public static float nvgTextBounds(long nvg, float i, float j, String string, float[] bounds) {
-        byte[] dat = toUtf8(string);
+	public static float nvgTextBounds(long nvg, float i, float j, CharSequence string, float[] bounds) {
+        byte[] dat = toUtf8(string.toString());
         return Nanovg.nvgTextBoundsJni(nvg, i, j, dat, 0, dat.length, bounds);
 	}
 
@@ -192,8 +192,8 @@ public class NanoVG extends Nanovg {
         return Nanovg.nvgTextBoundsJni(nvg, i, j, dat, 0, dat.length, bounds);
 	}
 
-	public static void nvgTextBoxBounds(long nvg, float i, float j, float breakRowWidth, String string, float[] bounds) {
-		byte[] dat = toUtf8(string);
+	public static void nvgTextBoxBounds(long nvg, float i, float j, float breakRowWidth, CharSequence string, float[] bounds) {
+		byte[] dat = toUtf8(string.toString());
         Nanovg.nvgTextBoxBoundsJni(nvg, i, j, breakRowWidth, dat, 0, dat.length, bounds);
 	}
 
@@ -202,9 +202,9 @@ public class NanoVG extends Nanovg {
         Nanovg.nvgTextBoxBoundsJni(nvg, i, j, breakRowWidth, dat, 0, dat.length, bounds);
 	}
 
-	public static Buffer nvgTextGlyphPositions(long nvg, int i, int j, String string, Buffer positions) {
+	public static Buffer nvgTextGlyphPositions(long nvg, int i, int j, CharSequence string, Buffer positions) {
 		long glyphsHandle = nvgCreateNVGglyphPosition(positions.size());
-		byte[] text_arr = toUtf8(string);
+		byte[] text_arr = toUtf8(string.toString());
 		int char_count = Nanovg.nvgTextGlyphPositionsJni(nvg, i, j, text_arr, 0, text_arr.length, glyphsHandle, positions.size());
 		
 		for (int k = 0; k < char_count; k++) {
