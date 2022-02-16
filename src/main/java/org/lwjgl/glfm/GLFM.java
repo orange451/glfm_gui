@@ -4,15 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWCharCallback;
 import org.lwjgl.glfw.GLFWCharCallbackI;
+import org.lwjgl.glfw.GLFWKeyCallback;
 import org.lwjgl.glfw.GLFWKeyCallbackI;
 import org.mini.gl.GLCallbacks;
-import org.mini.glfm.GLFMRenderFuncCallback;
-import org.mini.glfm.GLFMTouchCallback;
 import org.mini.glfm.Glfm;
 import org.mini.glfm.GlfmCallBack;
-import org.mini.glfw.GLFWCharCallback;
-import org.mini.glfw.GLFWKeyCallback;
 
 public class GLFM extends Glfm {
 

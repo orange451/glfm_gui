@@ -1,6 +1,4 @@
-package org.mini.glfw;
-
-import org.lwjgl.glfw.GLFWScrollCallbackI;
+package org.lwjgl.glfw;
 
 public abstract class GLFWScrollCallback implements GLFWScrollCallbackI {
 	

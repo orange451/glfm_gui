@@ -1,6 +1,4 @@
-package org.mini.glfm;
-
-import org.lwjgl.glfm.GLFMTouchCallbackI;
+package org.lwjgl.glfm;
 
 public abstract class GLFMTouchCallback implements GLFMTouchCallbackI {
 	

@@ -1,6 +1,4 @@
-package org.mini.glfw;
-
-import org.lwjgl.glfw.GLFWKeyCallbackI;
+package org.lwjgl.glfw;
 
 public abstract class GLFWKeyCallback implements GLFWKeyCallbackI {
 	

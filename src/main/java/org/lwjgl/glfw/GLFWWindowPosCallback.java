@@ -1,6 +1,4 @@
-package org.mini.glfw;
-
-import org.lwjgl.glfw.GLFWWindowPosCallbackI;
+package org.lwjgl.glfw;
 
 public abstract class GLFWWindowPosCallback implements GLFWWindowPosCallbackI {
 	

@@ -1,6 +1,4 @@
-package org.mini.glfw;
-
-import org.lwjgl.glfw.GLFWWindowMaximizeCallbackI;
+package org.lwjgl.glfw;
 
 public abstract class GLFWWindowMaximizeCallback implements GLFWWindowMaximizeCallbackI {
 	

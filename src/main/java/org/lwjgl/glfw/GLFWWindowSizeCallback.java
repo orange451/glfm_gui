@@ -1,6 +1,4 @@
-package org.mini.glfw;
-
-import org.lwjgl.glfw.GLFWWindowSizeCallbackI;
+package org.lwjgl.glfw;
 
 public abstract class GLFWWindowSizeCallback implements GLFWWindowSizeCallbackI {
 	

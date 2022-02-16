@@ -1,6 +1,4 @@
-package org.mini.glfw;
-
-import org.lwjgl.glfw.GLFWFramebufferSizeCallbackI;
+package org.lwjgl.glfw;
 
 public abstract class GLFWFramebufferSizeCallback implements GLFWFramebufferSizeCallbackI {
 	

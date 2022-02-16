@@ -1,6 +1,4 @@
-package org.mini.glfw;
-
-import org.lwjgl.glfw.GLFWWindowCloseCallbackI;
+package org.lwjgl.glfw;
 
 public abstract class GLFWWindowCloseCallback implements GLFWWindowCloseCallbackI {
 	

@@ -1,6 +1,4 @@
-package org.mini.glfw;
-
-import org.lwjgl.glfw.GLFWCharModsCallbackI;
+package org.lwjgl.glfw;
 
 public abstract class GLFWCharModsCallback implements GLFWCharModsCallbackI {
 	

@@ -1,6 +1,4 @@
-package org.mini.glfw;
-
-import org.lwjgl.glfw.GLFWMouseButtonCallbackI;
+package org.lwjgl.glfw;
 
 public abstract class GLFWMouseButtonCallback implements GLFWMouseButtonCallbackI {
 	

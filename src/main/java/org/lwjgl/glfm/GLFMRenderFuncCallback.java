@@ -1,6 +1,4 @@
-package org.mini.glfm;
-
-import org.lwjgl.glfm.GLFMRenderFuncCallbackI;
+package org.lwjgl.glfm;
 
 public abstract class GLFMRenderFuncCallback implements GLFMRenderFuncCallbackI {
 	

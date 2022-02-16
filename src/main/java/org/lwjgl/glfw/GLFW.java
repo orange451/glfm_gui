@@ -7,21 +7,6 @@ import java.util.Map;
 import org.mini.gl.GLCallbacks;
 import org.mini.glfm.Glfm;
 import org.mini.glfm.GlfmCallBack;
-import org.mini.glfw.GLFWCharCallback;
-import org.mini.glfw.GLFWCharModsCallback;
-import org.mini.glfw.GLFWCursorEnterCallback;
-import org.mini.glfw.GLFWCursorPosCallback;
-import org.mini.glfw.GLFWFramebufferSizeCallback;
-import org.mini.glfw.GLFWKeyCallback;
-import org.mini.glfw.GLFWMouseButtonCallback;
-import org.mini.glfw.GLFWScrollCallback;
-import org.mini.glfw.GLFWWindowCloseCallback;
-import org.mini.glfw.GLFWWindowFocusCallback;
-import org.mini.glfw.GLFWWindowIconifyCallback;
-import org.mini.glfw.GLFWWindowMaximizeCallback;
-import org.mini.glfw.GLFWWindowPosCallback;
-import org.mini.glfw.GLFWWindowRefreshCallback;
-import org.mini.glfw.GLFWWindowSizeCallback;
 import org.mini.gui.GCallBack;
 
 public class GLFW {

@@ -1,6 +1,4 @@
-package org.mini.glfw;
-
-import org.lwjgl.glfw.GLFWWindowRefreshCallbackI;
+package org.lwjgl.glfw;
 
 public abstract class GLFWWindowRefreshCallback implements GLFWWindowRefreshCallbackI {
 	

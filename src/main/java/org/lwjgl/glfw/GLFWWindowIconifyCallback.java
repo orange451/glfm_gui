@@ -1,6 +1,4 @@
-package org.mini.glfw;
-
-import org.lwjgl.glfw.GLFWWindowIconifyCallbackI;
+package org.lwjgl.glfw;
 
 public abstract class GLFWWindowIconifyCallback implements GLFWWindowIconifyCallbackI {
 	

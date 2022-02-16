@@ -1,6 +1,4 @@
-package org.mini.glfw;
-
-import org.lwjgl.glfw.GLFWCursorPosCallbackI;
+package org.lwjgl.glfw;
 
 public abstract class GLFWCursorPosCallback implements GLFWCursorPosCallbackI {
 	
