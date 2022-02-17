@@ -128,14 +128,14 @@ public class NanoVG extends Nanovg {
 		Nanovg.nvgFontFace(vg, font.toString().getBytes());
 	}
 
-	public static void nvgText(long vg, float xx, float yy, CharSequence text) {
+	public static float nvgText(long vg, float xx, float yy, CharSequence text) {
 		byte[] dat = toUtf8(text.toString());
-		Nanovg.nvgTextJni(vg, xx, yy, dat, 0, dat.length);
+		return Nanovg.nvgTextJni(vg, xx, yy, dat, 0, dat.length);
 	}
 
-	public static void nvgText(long vg, float xx, float yy, ByteBuffer text) {
+	public static float nvgText(long vg, float xx, float yy, ByteBuffer text) {
 		byte[] dat = text.array();
-		Nanovg.nvgTextJni(vg, xx, yy, dat, 0, dat.length);
+		return Nanovg.nvgTextJni(vg, xx, yy, dat, 0, dat.length);
 	}
 	
     private static byte[] toUtf8(String s) {
