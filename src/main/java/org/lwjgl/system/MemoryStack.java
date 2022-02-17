@@ -32,8 +32,8 @@ public class MemoryStack implements AutoCloseable {
 		return FloatBuffer.allocate(size);
 	}
 	
-	public static void stackPop() {
-		//
+	public static MemoryStack stackPop() {
+		return null;
 	}
 
     /**
