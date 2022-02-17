@@ -3,7 +3,6 @@ package org.lwjgl.nanovg;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 
-import org.lwjgl.nanovg.NVGGlyphPosition.Buffer;
 import org.mini.nanovg.Nanovg;
 
 public class NanoVG extends Nanovg {
@@ -62,8 +61,8 @@ public class NanoVG extends Nanovg {
 		return paint;
 	}
 
-	public static NVGPaint nvgImagePattern(long vg, float x, float y, float width, float height, int a, int b, int c, NVGPaint paint) {
-		byte[] data = Nanovg.nvgImagePattern(vg, x, y, width, height, a, b, c);
+	public static NVGPaint nvgImagePattern(long vg, float x, float y, float width, float height, float angle, int b, float alpha, NVGPaint paint) {
+		byte[] data = Nanovg.nvgImagePattern(vg, x, y, width, height, angle, b, alpha);
 		paint.set(data);
 		return paint;
 	}
@@ -112,8 +111,8 @@ public class NanoVG extends Nanovg {
 		Nanovg.nvgScissor(nvg, x, y, w, h);
 	}
 
-	public static void nvgBeginFrame(long nvg, int width, int height, float pixelRatio) {
-		Nanovg.nvgBeginFrame(nvg, width, height, pixelRatio);
+	public static void nvgBeginFrame(long nvg, float width, float height, float pixelRatio) {
+		Nanovg.nvgBeginFrame(nvg, (int)width, (int)height, pixelRatio);
 	}
 
 	public static void nvgTranslate(long vg, float x, float y) {
@@ -202,19 +201,21 @@ public class NanoVG extends Nanovg {
         Nanovg.nvgTextBoxBoundsJni(nvg, i, j, breakRowWidth, dat, 0, dat.length, bounds);
 	}
 
-	public static Buffer nvgTextGlyphPositions(long nvg, int i, int j, CharSequence string, Buffer positions) {
+	public static int nvgTextGlyphPositions(long nvg, float i, float j, CharSequence string, NVGGlyphPosition.Buffer positions) {
 		long glyphsHandle = nvgCreateNVGglyphPosition(positions.size());
 		byte[] text_arr = toUtf8(string.toString());
 		int char_count = Nanovg.nvgTextGlyphPositionsJni(nvg, i, j, text_arr, 0, text_arr.length, glyphsHandle, positions.size());
 		
+		float maxX = 0;
 		for (int k = 0; k < char_count; k++) {
 			float x0 = nvgNVGglyphPosition_x(glyphsHandle, k);
 			float x1 = x0 + 16; // TODO get implementation for glyph width
+			maxX = Math.max(maxX, x1);
 			
 			positions.put(new NVGGlyphPosition(x0, x1));
 		}
 		
 		positions.flip();
-		return positions;
+		return (int) maxX;
 	}
 }
