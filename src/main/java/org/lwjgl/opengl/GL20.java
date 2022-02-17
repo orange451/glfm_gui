@@ -5,8 +5,8 @@ import java.nio.FloatBuffer;
 import org.mini.nanovg.Gutil;
 
 public class GL20 extends GL11 {
-	public static int glGetUniformLocation(int program, String uniformName) {
-		return glGetUniformLocation(program, uniformName.getBytes());
+	public static int glGetUniformLocation(int program, CharSequence uniformName) {
+		return glGetUniformLocation(program, uniformName.toString().getBytes());
 	}
 
 	public static int glGetProgrami(int id, int glLinkStatus) {
@@ -15,8 +15,8 @@ public class GL20 extends GL11 {
 		return ret[0];
 	}
 
-	public static void glBindAttribLocation(int id, int i, String string) {
-		glBindAttribLocation(id, i, string.getBytes());
+	public static void glBindAttribLocation(int id, int i, CharSequence string) {
+		glBindAttribLocation(id, i, string.toString().getBytes());
 	}
 
 	public static String glGetProgramInfoLog(int id, int i) {
@@ -27,8 +27,8 @@ public class GL20 extends GL11 {
         return new String(szLog, 0, return_val[0]);
 	}
 
-	public static void glShaderSource(int id, String source) {
-		glShaderSource(id, 1, new byte[][]{Gutil.toUtf8(source)}, null, 0);
+	public static void glShaderSource(int id, CharSequence source) {
+		glShaderSource(id, 1, new byte[][]{Gutil.toUtf8(source.toString())}, null, 0);
 	}
 
 	public static int glGetShaderi(int id, int glCompileStatus) {
