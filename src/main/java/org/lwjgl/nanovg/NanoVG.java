@@ -111,8 +111,8 @@ public class NanoVG extends Nanovg {
 		Nanovg.nvgScissor(nvg, x, y, w, h);
 	}
 
-	public static void nvgBeginFrame(long nvg, float width, float height, float pixelRatio) {
-		Nanovg.nvgBeginFrame(nvg, (int)width, (int)height, pixelRatio);
+	public static void nvgBeginFrame(long nvg, float windowWidth, float windowHeight, float devicePixelRatio) {
+		Nanovg.nvgBeginFrame(nvg, (int)windowWidth, (int)windowHeight, devicePixelRatio);
 	}
 
 	public static void nvgTranslate(long vg, float x, float y) {
