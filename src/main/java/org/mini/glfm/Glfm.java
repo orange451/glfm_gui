@@ -6,7 +6,6 @@
 package org.mini.glfm;
 
 /**
- *
  * @author gust
  */
 public class Glfm {
@@ -14,6 +13,9 @@ public class Glfm {
     static {
         System.setProperty("gui.driver", "org.mini.glfm.GlfmCallBackImpl");
     }
+
+    public static final int //
+            MAX_SIMULTANEOUS_TOUCHES = 10;
 
     public static final int //
             GLFMRenderingAPIOpenGLES2 = 0,
@@ -43,9 +45,26 @@ public class Glfm {
             GLFMUserInterfaceChromeFullscreen = 2;
 
     public static final int //
-            GLFMUserInterfaceOrientationAny = 0,
-            GLFMUserInterfaceOrientationPortrait = 1,
-            GLFMUserInterfaceOrientationLandscape = 2;
+            GLFMInterfaceOrientationUnknown = 0,
+            GLFMInterfaceOrientationPortrait = (1 << 0),
+            GLFMInterfaceOrientationPortraitUpsideDown = (1 << 1),
+            GLFMInterfaceOrientationLandscapeLeft = (1 << 2),
+            GLFMInterfaceOrientationLandscapeRight = (1 << 3),
+            GLFMInterfaceOrientationLandscape = (GLFMInterfaceOrientationLandscapeLeft |
+                    GLFMInterfaceOrientationLandscapeRight),
+            GLFMInterfaceOrientationAll = (GLFMInterfaceOrientationPortrait |
+                    GLFMInterfaceOrientationPortraitUpsideDown |
+                    GLFMInterfaceOrientationLandscapeLeft |
+                    GLFMInterfaceOrientationLandscapeRight),
+            GLFMInterfaceOrientationAllButUpsideDown = (GLFMInterfaceOrientationPortrait |
+                    GLFMInterfaceOrientationLandscapeLeft |
+                    GLFMInterfaceOrientationLandscapeRight);
+
+    @Deprecated
+    public static final int //
+            GLFMUserInterfaceOrientationAny = GLFMInterfaceOrientationAll,
+            GLFMUserInterfaceOrientationPortrait = GLFMInterfaceOrientationPortrait,
+            GLFMUserInterfaceOrientationLandscape = GLFMInterfaceOrientationLandscape;
 
     public static final int //
             GLFMTouchPhaseHover = 0,
@@ -106,7 +125,7 @@ public class Glfm {
 
     public static native void glfmSetCallBack(long display, GlfmCallBack app);
 
-/// Init the display condifuration. Should only be called in glfmMain.
+    /// Init the display condifuration. Should only be called in glfmMain.
 /// If the device does not support the preferred rendering API, the next available rendering API is
 /// chosen (OpenGL ES 3.0 if OpenGL ES 3.1 is not available, and OpenGL ES 2.0 if OpenGL ES 3.0 is
 /// not available). Call glfmGetRenderingAPI in the GLFMSurfaceCreatedFunc to see which rendering
@@ -118,15 +137,35 @@ public class Glfm {
 //                          GLFMStencilFormat stencilFormat,
 //                          GLFMMultisample multisample);
     public static native void glfmSetDisplayConfig(long display,
-            int preferredAPI,
-            int colorFormat,
-            int depthFormat,
-            int stencilFormat,
-            int multisample);
+                                                   int preferredAPI,
+                                                   int colorFormat,
+                                                   int depthFormat,
+                                                   int stencilFormat,
+                                                   int multisample);
 
-    public static native void glfmSetUserInterfaceOrientation(long display, int allowedOrientations);
+    @Deprecated
+    public static void glfmSetUserInterfaceOrientation(long display, int allowedOrientations) {
+        glfmSetSupportedInterfaceOrientation(display, allowedOrientations);
+    }
 
-    public static native int glfmGetUserInterfaceOrientation(long display);
+    @Deprecated
+    public static int glfmGetUserInterfaceOrientation(long display) {
+        return glfmGetSupportedInterfaceOrientation(display);
+    }
+
+    /// Returns the supported user interface orientations. Default is GLFMInterfaceOrientationAll.
+    /// Actualy support may be limited by the device or platform.
+    public static native int glfmGetSupportedInterfaceOrientation(long display);
+
+    /// Sets the supported user interface orientations. Typical values are GLFMInterfaceOrientationAll,
+    /// GLFMInterfaceOrientationPortrait, or GLFMInterfaceOrientationLandscape.
+    /// Actualy support may be limited by the device or platform.
+    public static native void glfmSetSupportedInterfaceOrientation(long display, int supportedOrientations);
+
+    /// Gets the current user interface orientation. Returns either GLFMInterfaceOrientationPortrait,
+    /// GLFMInterfaceOrientationPortraitUpsideDown, GLFMInterfaceOrientationLandscapeRight,
+    /// GLFMInterfaceOrientationLandscapeLeft, or GLFMInterfaceOrientationUnknown.
+    public static native int glfmGetInterfaceOrientation(long display);
 
     public static native void glfmSetMultitouchEnabled(long display, boolean multitouchEnabled);
 
@@ -154,7 +193,7 @@ public class Glfm {
 
     public static native void glfmSetKeyboardVisible(long display, boolean visible);
 
-    public static native boolean glfmGetKeyboardVisible(long display);
+    public static native boolean glfmIsKeyboardVisible(long display);
 
     public static native String glfmGetResRoot();
 

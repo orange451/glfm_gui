@@ -165,8 +165,7 @@ public class AppLoader {
 
                 StandalongGuiAppClassLoader sgacl = new StandalongGuiAppClassLoader(getAppJarPath(jarName), ClassLoader.getSystemClassLoader());
                 Thread.currentThread().setContextClassLoader(sgacl);
-                Class c = sgacl.loadClass(className);
-
+                Class<?> c = sgacl.loadClass(className);
                 return c;
             }
         } catch (Exception ex) {
@@ -229,13 +228,13 @@ public class AppLoader {
             String jarFullPath = getAppJarPath(jarName);
             File f = new File(jarFullPath);
             if (f.exists()) {
-                //System.out.println("jar path:" + jarFullPath + "  " + key);
+                System.out.println("jar path:" + jarFullPath + "  " + key);
                 byte[] b = Zip.getEntry(jarFullPath, APP_CONFIG);
-                //System.out.println("b=" + b);
+                System.out.println("b=" + b);
                 if (b != null) {
 
                     String s = new String(b, "utf-8");
-                    //System.out.println("file contents :" + s);
+                    System.out.println("file contents :" + s);
                     s = s.replace("\r", "\n");
                     String[] ss = s.split("\n");
                     for (String line : ss) {
@@ -283,8 +282,9 @@ public class AppLoader {
             Class<?> c = getApplicationClass(jarName);
             if (c != null) {
             	System.out.println("Attempting to boot " + c);
-            	Method main = c.getMethod("main", String[].class);
-            	String[] param = new String[0];
+            	String display = "" + GCallBack.getInstance().getDisplay();
+            	String[] param = new String[] {display};
+            	Method main = c.getMethod("main", param.getClass());
             	main.invoke(null, (Object)param);
                 //app = c.newInstance();
                 //app.setSaveRoot(getAppDataPath(jarName));
@@ -292,8 +292,8 @@ public class AppLoader {
             }
 
         } catch (Exception ex) {
-            //ex.printStackTrace();
-           // GCallBack.getInstance().setApplication(null);
+        	ex.printStackTrace();
+        	// GCallBack.getInstance().setApplication(null);
         } finally {
             //if (GCallBack.getInstance().getApplication() == null || GCallBack.getInstance().getForm() == null) {
             	//app = null;

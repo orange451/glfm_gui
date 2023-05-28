@@ -1298,6 +1298,11 @@ public class GLFW {
 			public void onNotify(long display, String key, String val) {
 				//
 			}
+
+			@Override
+			public void onOrientationChanged(long display, int orientation) {
+				//
+			}
 		});
 	}
 }

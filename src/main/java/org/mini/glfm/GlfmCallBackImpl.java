@@ -126,7 +126,7 @@ public class GlfmCallBackImpl extends GCallBack {
     public void setDisplayTitle(String title) {
         ;
     }
-
+    
     void init() {
         fbWidth = Glfm.glfmGetDisplayWidth(display);
         fbHeight = Glfm.glfmGetDisplayHeight(display);
@@ -154,6 +154,12 @@ public class GlfmCallBackImpl extends GCallBack {
         AppLoader.boot();
         System.out.println("onSurfaceCreated " + width + "," + height + "," + pxRatio);
     }
+
+	@Override
+	public void onOrientationChanged(long display, int orientation) {
+		// TODO Auto-generated method stub
+		
+	}
 
     @Override
     public boolean onKey(long display, int keyCode, int action, int modifiers) {
@@ -237,6 +243,4 @@ public class GlfmCallBackImpl extends GCallBack {
             Nanovg.nvgDeleteGLES3(vg);
         }
     }
-
-
 }

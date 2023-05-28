@@ -875,4 +875,3 @@ public class GL {
     public static native void glGetInternalformativ(int ptarget, int pinternalformat, int ppname, int pcount, int[] pparams, int offset_pparams); //GLenum,GLenum,GLenum,GLsizei,GLint*, //void
 
 }
-
