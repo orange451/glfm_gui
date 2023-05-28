@@ -6,8 +6,6 @@
 package org.mini.glfm;
 
 import org.mini.apploader.AppLoader;
-import org.mini.apploader.Sync;
-import org.mini.gl.GL;
 import org.mini.gui.GCallBack;
 import org.mini.nanovg.Nanovg;
 
