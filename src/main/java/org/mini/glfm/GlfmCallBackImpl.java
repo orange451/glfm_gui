@@ -145,6 +145,11 @@ public class GlfmCallBackImpl extends GCallBack {
     public void mainLoop(long display, double frameTime) {
     	//
     }
+    
+	@Override
+	public void onRender(long display) {
+		super.onRender(display);
+	}
 
     @Override
     public void onSurfaceCreated(long display, int width, int height) {

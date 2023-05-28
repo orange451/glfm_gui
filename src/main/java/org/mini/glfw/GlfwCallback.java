@@ -150,6 +150,14 @@ public interface GlfwCallback {
     public void drop(long window, int count, String[] paths);
     
     
-    public void mainLoop();
+    //Deprecated by glfm, alter by render and glfmSwapBuffers
+    //subst in c layer,
+    @Deprecated
+    public void mainLoop(long display, double frameTime);
 
+    //     Render callback function.
+    //    typedef void (*GLFMRenderFunc)(GLFMDisplay *display);
+    default void onRender(long display) {
+    	//
+    }
 }

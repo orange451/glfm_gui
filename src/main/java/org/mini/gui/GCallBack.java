@@ -17,15 +17,16 @@ public abstract class GCallBack implements GlfwCallback, GlfmCallBack {
 
     static GCallBack instance;
 
-    public static GCallBack getInstance() {
+    @SuppressWarnings("deprecation")
+	public static GCallBack getInstance() {
         if (instance == null) {
 
             try {
-                Class glfw = Class.forName("org.mini.glfw.Glfw");
+                Class<?> glfw = Class.forName("org.mini.glfw.Glfw");
                 System.out.println("load gui native " + glfw);
-                Class glfm = Class.forName("org.mini.glfm.Glfm");
+                Class<?> glfm = Class.forName("org.mini.glfm.Glfm");
                 System.out.println("load gui native " + glfm);
-                Class c = Class.forName(System.getProperty("gui.driver"));
+                Class<?> c = Class.forName(System.getProperty("gui.driver"));
                 instance = (GCallBack) c.newInstance();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -225,9 +226,9 @@ public abstract class GCallBack implements GlfwCallback, GlfmCallBack {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void mainLoop() {
+	@Override
+	public void onRender(long display) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	}
 
 }

@@ -13,6 +13,7 @@ public class GLFMApplicationDisplay implements GApplicationDisplay {
 		Glfm.glfmSetKeyboardVisible(display, value);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void setUserInterfaceOrientation(long display, int value) {
 		Glfm.glfmSetUserInterfaceOrientation(display, value);
