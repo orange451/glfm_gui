@@ -1226,6 +1226,11 @@ public class GLFW {
 			}
 
 			@Override
+			public void onRender(long display) {
+				//
+			}
+
+			@Override
 			public boolean onTouch(long display, int touch, int phase, double x, double y) {
 				if ( GLCallbacks.cursorPosCallbacks.containsKey(display) )
 					GLCallbacks.cursorPosCallbacks.get(display).invoke(display, x, y);

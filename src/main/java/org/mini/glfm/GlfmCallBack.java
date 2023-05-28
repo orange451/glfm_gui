@@ -18,10 +18,7 @@ public interface GlfmCallBack {
 
     //     Render callback function.
     //    typedef void (*GLFMRenderFunc)(GLFMDisplay *display);
-    default void onRender(long display) {
-        mainLoop(display, 0);
-        Glfm.glfmSwapBuffers(display);
-    }
+    public void onRender(long display);
 
     //bool onTouch(GLFMDisplay *display, int touch, GLFMTouchPhase phase, double x, double y)
     public boolean onTouch(long display, int touch, int phase, double x, double y);

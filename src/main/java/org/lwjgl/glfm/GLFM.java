@@ -56,8 +56,15 @@ public class GLFM extends Glfm {
 
 			@Override
 			public void mainLoop(long display, double frameTime) {
+				// No longer used
+			}
+
+			@Override
+			public void onRender(long display) {
+		        mainLoop(display, 0);
+
 				if ( GLCallbacks.renderFuncCallbacks.containsKey(display) )
-					GLCallbacks.renderFuncCallbacks.get(display).invoke(display, frameTime);
+					GLCallbacks.renderFuncCallbacks.get(display).invoke(display, 0);
 			}
 
 			@Override
