@@ -7,6 +7,7 @@ import java.util.Map;
 import org.mini.gl.GLCallbacks;
 import org.mini.glfm.Glfm;
 import org.mini.glfm.GlfmCallBack;
+import org.mini.glfw.Glfw;
 import org.mini.gui.GCallBack;
 
 public class GLFW {
@@ -1144,6 +1145,7 @@ public class GLFW {
 	
 	public static void glfwSwapBuffers(long window) {
 		setupCallbacks(window);
+		Glfw.glfwSwapBuffers(window);
 	}
 	
 	public static GLFWCursorPosCallback glfwSetCursorPosCallback(long window, GLFWCursorPosCallbackI callback) {

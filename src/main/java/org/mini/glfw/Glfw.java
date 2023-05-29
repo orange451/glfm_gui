@@ -825,23 +825,23 @@ public class Glfw {
         return null;
     }
 
-    public static void glfmSwapBuffers(long display) {
+    public static void glfwSwapBuffers(long display) {
     	//
     }
 
-    public static boolean glfmIsHapticFeedbackSupported(long display) {
+    public static boolean glfwIsHapticFeedbackSupported(long display) {
     	return false;
     }
 
-    public static void glfmPerformHapticFeedback(long display, int style) {
+    public static void glfwPerformHapticFeedback(long display, int style) {
     	//
     }
     
-    public static boolean glfmIsMetalSupported(long display) {
+    public static boolean glfwIsMetalSupported(long display) {
     	return false;
     }
 
-    public static long glfmGetMetalView(long display) {
+    public static long glfwGetMetalView(long display) {
     	return 0;
     }
 
